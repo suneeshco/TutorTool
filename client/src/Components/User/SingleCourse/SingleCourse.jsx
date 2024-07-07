@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SingleCourse.css'
+import { useParams } from 'react-router-dom'
+import { studentapiRequest } from '../../../api/axios'
 
 const SingleCourse = () => {
+    const {id} = useParams()
+    const [course,setCourse] = useState({})
+
+    const fetchSingleCourse = async(id) =>{
+        try {
+            const response = await studentapiRequest({
+              method: 'get',
+              url: `/getSingleCourse/${id}`
+            });
+            console.log(response);
+            if (response.courses) {
+              setCourse(response.courses)
+            }
+      
+          } catch (error) {
+            console.error("Failed to fetch courses:", error);
+          }
+    }
+
+    useEffect(()=>{
+        fetchSingleCourse(id)
+    },[])
     return (
         // <div className='singleCourse'>
         //   <div className='basic'>
@@ -18,22 +42,22 @@ const SingleCourse = () => {
         <div className='container'>
             <div className='details'>
                 <h1 className='titles'>
-                    hshisrsdurxjhdjhd
+                    {course.title}
                 </h1>
                 <h1 className='description'>
-                    xjhjdhfcoxjfkdxjcvlk
+                    {course.description}
                 </h1>
 
                 <div className='price'>
                     <h1>
-                        Price: ₹ 64656
+                        Price: ₹ {course.price}
                     </h1>
                 </div>
             </div>
 
             <div className='thumbnail'>
                 <div className='thumbnail-container'>
-                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBfqqkpONm61Hc1kzQjjRACDZ16B0bfJnaJg&s' alt='Course Thumbnail' />
+                    <img src={course.image} alt='Course Thumbnail' />
                 </div>
 
 

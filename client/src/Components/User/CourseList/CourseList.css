@@ -1,61 +1,65 @@
 
 
-/* Container for the grid */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
-    margin: 0 auto;
-    max-width: 80rem; /* This is equivalent to Tailwind's max-w-7xl */
+
+.grid-containers {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .grid-containers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
-  /* Responsive grid columns */
-  @media (min-width: 640px) {
-    .grid-container {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+}
+
+@media (min-width: 768px) {
+  .grid-containers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
-  @media (min-width: 768px) {
-    .grid-container {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+}
+
+@media (min-width: 1024px) {
+  .grid-containers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-  
-  @media (min-width: 1024px) {
-    .grid-container {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+}
+
+@media (min-width: 1280px) {
+  .grid-containers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+}
   
-  /* Card styles */
+  
   .card {
     background-color: white;
-    border: 1px solid #e5e7eb; /* Tailwind's border-gray-200 */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-xl */
+    border: 1px solid #e5e7eb; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     overflow: hidden;
   }
   
-  /* Image styles */
+  
   .card img {
     width: 100%;
-    height: 12rem; /* Tailwind's h-48 */
+    height: 12rem; 
     object-fit: cover;
   }
-  
-  /* Card content */
+ 
   .card-content {
-    padding: 1rem; /* Tailwind's p-4 */
+    padding: 1rem;
   }
   
   .card-content h4 {
-    font-size: 1.125rem; /* Tailwind's text-lg */
+    font-size: 1.125rem; 
     font-weight: bold;
-    color: #1f2937; /* Tailwind's text-gray-900 */
+    color: #1f2937;
   }
   
   .card-content p {
-    margin-top: 0.25rem; /* Tailwind's mt-1 */
-    color: #374151; /* Tailwind's text-gray-800 */
+    margin-top: 0.25rem; 
+    color: #374151; 
   }
   

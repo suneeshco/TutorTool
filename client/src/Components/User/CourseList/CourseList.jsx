@@ -1,91 +1,61 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './CourseList.css'
+import { studentapiRequest } from '../../../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 const CourseList = () => {
+  const navigate = useNavigate();
+  const [course, setCourse] = useState([])
+  const fetchCourses = async () => {
+    try {
+      const response = await studentapiRequest({
+        method: 'get',
+        url: '/getAllCourses'
+      });
+      console.log(response);
+      if (response.courses) {
+        setCourse(response.courses)
+      }
+
+    } catch (error) {
+      console.error("Failed to fetch courses:", error);
+    }
+  };
+
+  const getSingleCourse = (id) =>{
+    navigate(`/courseview/${id}`)
+  }
+  useEffect(() => {
+    fetchCourses();
+  }, [])
   return (
     <div>
-      <h1>Top Courses</h1>
-      <div className="grid-container">
-        
-          <div  className="card">
-            <img
-              className="card-img"
-              src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_08_MicrosoftTeams-image-13-2-1.jpg"
-              alt="Course Thumbnail"
-            />
-            <div className="card-content">
-              <h4>Advance</h4>
-              <p>ohfhdjhdkhgkjdh</p>
-              <p>₹1400</p>
-            </div>
+      {course.length > 0 ? (
+        <>
+          <h1>Top Courses</h1>
+          <div className="grid-containers">
+            {course.map((ele, i) => (
+              <div key={i} className="card" onClick={() => { getSingleCourse(ele._id) }}>
+                <img
+                  className="card-img"
+                  src={ele.image}
+                  alt="Course Thumbnail"
+                />
+                <div className="card-content">
+                  <h4>{ele.title}</h4>
+                  <p>{ele.description}</p>
+                  <p>₹ {ele.price}</p>
+                </div>
+              </div>
+            ))}
           </div>
+        </>
+      ) : (
+        <>
+          <h1>No Course Available</h1>
+        </>
+      )}
 
-          <div  className="card">
-            <img
-              className="card-img"
-              src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_08_MicrosoftTeams-image-13-2-1.jpg"
-              alt="Course Thumbnail"
-            />
-            <div className="card-content">
-              <h4>Advance</h4>
-              <p>ohfhdjhdkhgkjdh</p>
-              <p>₹1400</p>
-            </div>
-          </div>
-
-          <div  className="card">
-            <img
-              className="card-img"
-              src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_08_MicrosoftTeams-image-13-2-1.jpg"
-              alt="Course Thumbnail"
-            />
-            <div className="card-content">
-              <h4>Advance</h4>
-              <p>ohfhdjhdkhgkjdh</p>
-              <p>₹1400</p>
-            </div>
-          </div>
-
-          <div  className="card">
-            <img
-              className="card-img"
-              src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_08_MicrosoftTeams-image-13-2-1.jpg"
-              alt="Course Thumbnail"
-            />
-            <div className="card-content">
-              <h4>Advance</h4>
-              <p>ohfhdjhdkhgkjdh</p>
-              <p>₹1400</p>
-            </div>
-          </div>
-
-          <div  className="card">
-            <img
-              className="card-img"
-              src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_08_MicrosoftTeams-image-13-2-1.jpg"
-              alt="Course Thumbnail"
-            />
-            <div className="card-content">
-              <h4>Advance</h4>
-              <p>ohfhdjhdkhgkjdh</p>
-              <p>₹1400</p>
-            </div>
-          </div>
-
-          <div  className="card">
-            <img
-              className="card-img"
-              src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_08_MicrosoftTeams-image-13-2-1.jpg"
-              alt="Course Thumbnail"
-            />
-            <div className="card-content">
-              <h4>Advance</h4>
-              <p>ohfhdjhdkhgkjdh</p>
-              <p>₹1400</p>
-            </div>
-          </div>
-       
-      </div>
     </div>
   )
 }

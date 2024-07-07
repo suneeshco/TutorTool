@@ -55,10 +55,14 @@
     padding: 16px;
     padding-top: 40px;
     background-color: #4B5563; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family:sans-serif;
 }
 
 .titles {
-    font-size: 2rem; 
+    font-size: 3.5rem; 
     color: white;
     font-weight: bold;
     margin-bottom: 8px;
@@ -68,7 +72,7 @@
 
 
 .description {
-    font-size: 0.875rem;
+    font-size: 2rem;
     color: white;
     padding-top: 4px;
     margin-bottom: 8px;
@@ -81,7 +85,7 @@
 }
 
 .price h1 {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     color: white;
     font-weight: bold;
     margin-bottom: 8px;

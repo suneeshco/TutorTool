@@ -2,8 +2,13 @@ import React from 'react'
 import './UserSignUp.css'
 import { useFormik } from 'formik';
 import { studentSignUpSchema } from '../../Validations/SignUpSchema.js';
+import { apiRequest } from '../../../api/axios.js';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const UserSignUp = () => {
+    const navigate = useNavigate()
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
           firstname: "",
@@ -25,7 +30,14 @@ const UserSignUp = () => {
               password: values.password
             }
           })
-          console.log(response);
+          if(response.user){
+            toast.success("Account Created")
+            setTimeout(() => {
+                navigate('/');  
+              }, 2000);
+          }else if (response.error){
+            toast.error(response.error)
+          }
         }
         })
     return (
@@ -33,7 +45,6 @@ const UserSignUp = () => {
             <form className="form" onSubmit={handleSubmit}>
                 <p className="title">Register </p>
                 <p className="message">Signup now and get full access to our app. </p>
-                
                     <label>
                         <input required="" placeholder="" id='firstname' type="text" className="input" value={values.firstname}  onChange={handleChange} onBlur={handleBlur} />
                         <span>Firstname</span>
@@ -56,7 +67,7 @@ const UserSignUp = () => {
                 </label>
                 {errors.confirmPassword && touched.confirmPassword && <p style={{fontSize:12,color:'red'}}>{errors.confirmPassword}</p>}
                 <button className="submit">Submit</button>
-                <p className="signin">Already have an account ? <a href="#">Signin</a> </p>
+                <p className="signin">Already have an account ? <Link to={'/'}> <a href="">Signin</a> </Link></p>
             </form>
         </div>
     )
