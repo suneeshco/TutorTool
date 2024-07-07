@@ -1,0 +1,11 @@
+.log{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/src/assets/login.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }

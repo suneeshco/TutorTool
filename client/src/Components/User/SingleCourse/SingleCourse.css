@@ -1,0 +1,108 @@
+/* 
+.basic{
+    display: flex;
+    justify-content: space-around;
+    height: 30vh;
+    background-color: rgb(105, 79, 147);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.heading{
+    height:auto;
+    color: white;
+}
+.image{
+    height: auto;
+}
+.singleCourse{
+    padding-top: 40px;
+}
+.image img{
+    border: 10px;
+    border-color: black;
+} */
+
+
+.container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: #4B5563; /* bg-gray-600 */
+    padding-top: 100px;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+        height: 400px;
+        padding-top: 20px;
+    }
+
+    .details {
+        width: 60%;
+        padding-right: 16px;
+    }
+
+    .thumbnail {
+        width: 40%;
+    }
+}
+
+
+.details {
+    width: 100%;
+    padding: 16px;
+    padding-top: 40px;
+    background-color: #4B5563; 
+}
+
+.titles {
+    font-size: 2rem; 
+    color: white;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-family: Arial, sans-serif;
+}
+
+
+
+.description {
+    font-size: 0.875rem;
+    color: white;
+    padding-top: 4px;
+    margin-bottom: 8px;
+}
+
+
+
+.price {
+    padding-top: 12px;
+}
+
+.price h1 {
+    font-size: 1.125rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+.thumbnail {
+    width: 100%;
+    padding: 16px;
+}
+
+.thumbnail-container {
+    background-color: #F8FAFC; 
+    border-bottom: 1px solid black; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.thumbnail-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+

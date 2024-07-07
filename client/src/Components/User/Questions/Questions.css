@@ -1,0 +1,51 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;  
+    gap: 16px; 
+}
+
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.questions {
+   
+    padding: 10px;
+}
+
+.option {
+    display: block; 
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 8px; 
+    text-align: start;
+}
+.innerquestion{
+    border: 2px solid rgb(97, 31, 211);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px; 
+}
+.submit {
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+
+  .ques{
+    display: block; 
+    padding: 5px;
+    border-radius: 8px; 
+    text-align: start;
+  }
+  
