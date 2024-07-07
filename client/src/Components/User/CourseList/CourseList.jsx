@@ -35,7 +35,7 @@ const CourseList = () => {
           <h1>Top Courses</h1>
           <div className="grid-containers">
             {course.map((ele, i) => (
-              <div key={i} className="card" onClick={() => { getSingleCourse(ele._id) }}>
+              <div key={i} className="card" onClick={() => { getSingleCourse(ele._id) }} >
                 <img
                   className="card-img"
                   src={ele.image}

@@ -31,3 +31,12 @@ export const studentapiRequest = async (config) => {
        throw error;
     }
 };
+
+
+studentapi.interceptors.request.use((config) => {
+    const studentToken = localStorage.getItem('studentToken');
+    if (studentToken !== null) {
+    config.headers.authorization = `Bearer ${studentToken}`;
+    }
+    return config;
+    })
